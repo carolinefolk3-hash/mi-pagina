@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -72,6 +72,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(4,4,10,.92);
 @media(max-width:1100px){.g4{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:480px){#ia .g3{grid-template-columns:1fr}}
 
 .card-top{display:flex;align-items:flex-start;gap:.7rem}
 
@@ -484,7 +485,12 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
   .card-icon.has-logo{width:42px!important;height:42px!important;min-width:42px!important;border-radius:12px!important}
 }
 </style>
-<meta property="og:title" content="Express Tena — Plataformas Digitales" data-id="th-modified" ><meta name="description" content="Express Tena" data-id="th-modified" ><meta property="og:description" content="Express Tena" data-id="th-modified" ><meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified" ><meta property="og:image:width" content="1501" data-id="th-modified" ><meta property="og:image:height" content="1501" data-id="th-modified" ><meta property="og:image:type" content="image/png" data-id="th-modified" ><meta property="og:url" content="https://beige-imogene-98.tiiny.site/" data-id="th-modified" ><meta property="og:type" content="website" data-id="th-modified" ><script defer data-domain="beige-imogene-98.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script></head>
+<meta property="og:title" content="Express Tena — Plataformas Digitales" data-id="th-modified" ><meta name="description" content="Express Tena" data-id="th-modified" ><meta property="og:description" content="Express Tena" data-id="th-modified" ><meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified" ><meta property="og:image:width" content="1501" data-id="th-modified" ><meta property="og:image:height" content="1501" data-id="th-modified" ><meta property="og:image:type" content="image/png" data-id="th-modified" ><meta property="og:url" content="https://beige-imogene-98.tiiny.site/" data-id="th-modified" ><meta property="og:type" content="website" data-id="th-modified" ><script defer data-domain="beige-imogene-98.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><style id="assistant-start-fix">
+#et-fab{display:none!important}
+.assistant-start{position:relative;z-index:3;padding:76px 1rem 1.5rem;background:rgba(255,255,255,.018)}
+.assistant-start #et-win{position:relative!important;top:auto!important;right:auto!important;left:auto!important;z-index:3!important;width:min(760px,100%)!important;height:auto!important;margin:0 auto!important;border-radius:20px!important;border:1px solid rgba(0,245,255,.18)!important;box-shadow:0 14px 42px rgba(0,0,0,.38)!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;background:#100d1a!important;transform:none!important;opacity:1!important;pointer-events:auto!important;font-family:'DM Sans',sans-serif!important}
+.assistant-start #et-msgs{min-height:120px;max-height:260px}
+</style></head>
 <body>
 <div id="cinema-bg">
   <div class="bg-slide" style="background-image:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1600&q=80');animation-delay:0s"></div>
@@ -549,13 +555,47 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
   <a href="https://wa.me/593992687009?text=Hola%20Express%20Tena" target="_blank" class="mob-wa" onclick="closeMenu()">💬 WhatsApp — 0992687009</a>
 </div>
 
+<section class="assistant-start">
+<div id="et-win" role="dialog" aria-label="Asistente Express Tena">
+  <div id="et-header">
+    <div class="et-hdr-ava">🚀</div>
+    <div class="et-hdr-info">
+      <strong>Express Tena</strong>
+      <span><span class="et-online"></span>Asistente virtual · 24/7</span>
+    </div>
+    <a class="et-hdr-wa" href="https://wa.me/593992687009?text=Hola%20Express%20Tena" target="_blank" rel="noopener">📲 WhatsApp</a>
+  </div>
+  <div id="et-msgs" aria-live="polite"></div>
+  <div id="et-chips">
+    <button class="et-chip" onclick="etBot.goTo('streaming')">🎬 Streaming</button>
+    <button class="et-chip" onclick="etBot.goTo('deportes')">⚽ Deportes</button>
+    <button class="et-chip" onclick="etBot.ligas()">🏆 Ligas</button>
+    <button class="et-chip" onclick="etBot.goTo('apple')">🍎 Apple</button>
+    <button class="et-chip" onclick="etBot.goTo('iptv')">📡 IPTV</button>
+    <button class="et-chip" onclick="etBot.goTo('musica')">🎵 Música</button>
+    <button class="et-chip" onclick="etBot.goTo('migrar-playlist')">🔀 Migrar Playlist</button>
+    <button class="et-chip" onclick="etBot.goTo('ia')">🤖 IA & Tools</button>
+    <button class="et-chip" onclick="etBot.catalog()">📋 Ver catálogo</button>
+    <button class="et-chip install" onclick="etBot.linkInstalacion()">🔗 Link no funciona</button>
+    <button class="et-chip danger" onclick="etBot.reporte()">🚨 Reportar problema</button>
+  </div>
+  <div id="et-input-row">
+    <input id="et-input" type="text" placeholder="Escribe tu pregunta…" autocomplete="off"
+      onkeydown="if(event.key==='Enter') etBot.send()" />
+    <button id="et-send" onclick="etBot.send()">➤</button>
+  </div>
+</div>
+</section>
+
 <section class="hero">
   <div class="hero-bg"><div class="orb1"></div><div class="orb2"></div><div class="orb3"></div></div>
   <div class="hero-content">
     <div class="live-badge"><span class="live-dot"></span> Servicio activo 24/7 · Tena, Napo</div>
-        <div id="hero-trailer" style="width:100%;max-width:720px;margin:0 auto 1.8rem;border-radius:16px;overflow:hidden;box-shadow:0 0 40px rgba(79,124,255,.25);border:1px solid rgba(79,124,255,.2);position:relative;background:#000;aspect-ratio:16/9">
-      <iframe src="https://www.youtube.com/embed/UPDjaBBJThU" title="Express Tena Ecuador" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;display:block;border-radius:16px;"></iframe>
-    </div>
+        <a id="hero-trailer" href="https://www.youtube.com/watch?v=UPDjaBBJThU" target="_blank" rel="noopener" style="width:100%;max-width:720px;margin:0 auto 1.8rem;border-radius:16px;overflow:hidden;box-shadow:0 0 40px rgba(79,124,255,.25);border:1px solid rgba(79,124,255,.2);position:relative;background:#000;aspect-ratio:16/9;display:block">
+      <img src="https://img.youtube.com/vi/UPDjaBBJThU/maxresdefault.jpg" alt="Express Tena Ecuador" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;opacity:.82">
+      <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45));"><span style="width:76px;height:76px;border-radius:50%;background:#ff0033;color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 10px 35px rgba(0,0,0,.45);padding-left:5px">▶</span></span>
+      <span style="position:absolute;left:1rem;right:1rem;bottom:1rem;color:#fff;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.85)">Ver video de Express Tena en YouTube</span>
+    </a>
 </section>
 
 <div class="stats-bar">
@@ -564,30 +604,6 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
     <div class="stat"><div class="num">+500</div><div class="lbl">Clientes satisfechos</div></div>
     <div class="stat"><div class="num">24/7</div><div class="lbl">Soporte activo</div></div>
     <div class="stat"><div class="num">100%</div><div class="lbl">Garantía incluida</div></div>
-  </div>
-</div>
-
-<!-- ===== TARJETA ASISTENTE VIRTUAL ===== -->
-<div style="padding:2.5rem 1.5rem 0;max-width:900px;margin:0 auto">
-  <div style="background:linear-gradient(135deg,rgba(191,0,255,.12),rgba(0,245,255,.1));border:1px solid rgba(0,245,255,.22);border-radius:24px;padding:2rem;display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap;position:relative;overflow:hidden">
-    <!-- Glow fondo -->
-    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 20% 50%,rgba(191,0,255,.1),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(0,245,255,.08),transparent 60%)"></div>
-    <!-- Icono -->
-    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#bf00ff,#00f5ff);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;box-shadow:0 0 28px rgba(0,245,255,.4);position:relative;z-index:1">🚀</div>
-    <!-- Texto -->
-    <div style="flex:1;min-width:200px;position:relative;z-index:1">
-      <div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:1.2rem;margin-bottom:.3rem">Asistente Virtual Express Tena</div>
-      <div style="color:rgba(200,220,255,.7);font-size:.85rem;margin-bottom:.9rem">Pregúntame precios, plataformas, pagos o cualquier duda — respondo al instante 24/7</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.45rem">
-        <span style="background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.2);color:rgba(0,245,255,.85);font-size:.72rem;padding:.22rem .65rem;border-radius:20px;font-weight:500">💬 ¿Cuánto cuesta Netflix?</span>
-        <span style="background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.2);color:rgba(0,245,255,.85);font-size:.72rem;padding:.22rem .65rem;border-radius:20px;font-weight:500">📋 ¿Cómo pago?</span>
-        <span style="background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.2);color:rgba(0,245,255,.85);font-size:.72rem;padding:.22rem .65rem;border-radius:20px;font-weight:500">📡 ¿Tienen IPTV?</span>
-      </div>
-    </div>
-    <!-- Botón -->
-    <div style="position:relative;z-index:1">
-      <button onclick="etBot.toggle()" style="background:linear-gradient(135deg,#bf00ff,#00f5ff);color:#fff;font-weight:700;padding:.9rem 1.8rem;border-radius:14px;font-size:.95rem;border:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;box-shadow:0 0 24px rgba(0,245,255,.35);transition:filter .2s,transform .2s;white-space:nowrap" onmouseover="this.style.filter='brightness(1.15)';this.style.transform='scale(1.04)'" onmouseout="this.style.filter='';this.style.transform=''">🚀 Abrir asistente</button>
-    </div>
   </div>
 </div>
 
@@ -1142,7 +1158,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>6618554</strong></div>
-            <a href="http://aftv.news/2879817" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/6618554" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=megax+tv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Ingresa el código en <strong>Downloader</strong> o búscala directo en Play Store</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1182,7 +1198,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>5808417</strong></div>
-            <a href="http://bitcc.net/flujo-mobile-v831" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/5808417" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=flujo+tv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Ingresa el código en <strong>Downloader</strong> o descarga el APK directo</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1222,7 +1238,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>4471669</strong></div>
-            <a href="http://n9.cl/lvxy0n" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/4471669" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=astro+tv+iptv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Ingresa el código en <strong>Downloader</strong> o descarga el APK oficial</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1262,7 +1278,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>3791340</strong></div>
-            <a href="http://aftv.news/3791340" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/3791340" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=tv+digital+iptv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Ingresa el código <strong>3791340</strong> en <strong>Downloader</strong> o búscala en Play Store</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1302,7 +1318,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>1208408</strong></div>
-            <a href="http://gxapps.es/gxmax34.apk" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/1208408" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=gx+max+tv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Descarga el APK o búscala en Play Store</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1342,7 +1358,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>169235</strong></div>
-            <a href="http://www.fiveplay.live/app/2.apk" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/169235" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=five+play+iptv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Descarga el APK o búscala en Play Store</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1382,7 +1398,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>6728565</strong></div>
-            <a href="http://gxapps.es/Veltix_Mob_0.1.25.apk" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/6728565" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=veltix+tv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar en Play Store</a>
             <div class="iptv-tip">Descarga el APK o búscala en Play Store</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1422,7 +1438,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div class="iptv-code-box">🔢 Código: <strong>5531300</strong></div>
-            <a href="http://aftv.news/5531300" target="_blank" class="iptv-link-btn">📥 Descargar APK</a>
+            <a href="https://aftv.news/5531300" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Descargar APK</a>
             <a href="https://play.google.com/store/search?q=maxclick+tv&c=apps" target="_blank" onclick="event.stopPropagation()" class="iptv-link-btn" style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#22c55e">🛒 Buscar Maxclick TV en Play Store</a>
             <div class="iptv-tip">Búscala directo en Play Store o ingresa el código en <strong>Downloader</strong></div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1462,16 +1478,16 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
           </div>
           <div class="iptv-app-body">
             <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-bottom:.5rem;font-weight:600">📱 Para móvil Android (v7.2.2)</div>
-            <a href="http://aftv.news/8461050" target="_blank" class="iptv-link-btn" style="margin-bottom:.4rem">📥 Link 1</a>
-            <a href="http://aftv.news/4637561" target="_blank" class="iptv-link-btn" style="margin-bottom:.8rem">📥 Link 2</a>
+            <a href="https://aftv.news/8461050" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn" style="margin-bottom:.4rem">📥 Link 1</a>
+            <a href="https://aftv.news/4637561" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn" style="margin-bottom:.8rem">📥 Link 2</a>
             <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-bottom:.5rem;font-weight:600">📺 Para Android TV / Fire TV / TV Box (v7.4.3)</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.8rem">
-              <a href="http://aftv.news/8461050" target="_blank" class="iptv-link-btn">📥 Link 1</a>
-              <a href="http://aftv.news/7726689" target="_blank" class="iptv-link-btn">📥 Link 2</a>
-              <a href="http://aftv.news/9820465" target="_blank" class="iptv-link-btn">📥 Link 3</a>
-              <a href="http://aftv.news/9546975" target="_blank" class="iptv-link-btn">📥 Link 4</a>
+              <a href="https://aftv.news/8461050" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Link 1</a>
+              <a href="https://aftv.news/7726689" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Link 2</a>
+              <a href="https://aftv.news/9820465" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Link 3</a>
+              <a href="https://aftv.news/9546975" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="iptv-link-btn">📥 Link 4</a>
             </div>
-            <div class="iptv-code-box" style="margin-bottom:.5rem">✅ Códigos Downloader: <strong>8461050 · 7726689 · 9820465 · 9546975</strong></div>
+            <div class="iptv-code-box" style="margin-bottom:.5rem">✅ Códigos Downloader: <strong>8461050 · 4637561 · 7726689 · 9820465 · 9546975</strong></div>
             <a href="https://www.oleada-tv.online/" target="_blank" class="iptv-link-btn" style="background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.3);color:#22c55e">🌐 Ver en web (PC · Mac · iPhone · iPad)</a>
             <div class="iptv-tip">⚠️ <strong>No disponible en Google Play.</strong> Descarga solo desde los links oficiales arriba.</div>
             <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:10px;padding:.8rem 1rem;margin-top:.3rem">
@@ -1722,7 +1738,6 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
               <div style="color:var(--muted);font-size:.72rem;margin-bottom:.1rem">Correo titular</div>
               <div style="color:#fff;font-size:.95rem;font-weight:700" id="pich-correo">carolinefolk3@gmail.com</div>
             </div>
-            <button onclick="copiarDato('pich-correo','btn-pich-correo')" id="btn-pich-correo" style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:.75rem;font-weight:600;padding:.4rem .8rem;border-radius:8px;cursor:pointer;transition:background .2s;white-space:nowrap">📋 Copiar</button>
           </div>
         </div>
       </div>
@@ -1839,7 +1854,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s,transform .3s" onmouseover="this.style.borderColor='rgba(79,124,255,.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">📺</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">Max (HBO)</div></div>
         <div style="display:flex;flex-direction:column;gap:.45rem">
-          <a href="https://play.google.com/store/apps/details?id=com.hbo.hbonow" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
+          <a href="https://play.google.com/store/apps/details?id=com.wbd.stream&hl=es_419" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
           <a href="https://apps.apple.com/app/max-stream-hbo-tv-movies/id1666653815" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
         </div>
       </div>
@@ -1858,7 +1873,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
         <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">🏔️</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">Paramount+</div></div>
         <div style="display:flex;flex-direction:column;gap:.45rem">
           <a href="https://play.google.com/store/apps/details?id=com.cbs.ca" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
-          <a href="https://apps.apple.com/app/paramount/id1340650234" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+          <a href="https://apps.apple.com/us/app/paramount/id530168168" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
         </div>
       </div>
 
@@ -1884,8 +1899,8 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s,transform .3s" onmouseover="this.style.borderColor='rgba(79,124,255,.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">📡</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">DirecTV Go</div></div>
         <div style="display:flex;flex-direction:column;gap:.45rem">
-          <a href="https://play.google.com/store/apps/details?id=com.directvgo.android" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
-          <a href="https://apps.apple.com/app/directv-go/id1437524367" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+          <a href="https://play.google.com/store/apps/details?id=com.directv.dtvlatam&hl=es_419" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
+          <a href="https://apps.apple.com/ec/app/dgo/id1349939060" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
         </div>
       </div>
 
@@ -1948,7 +1963,7 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
         <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">🎎</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">Viki Rakuten</div></div>
         <div style="display:flex;flex-direction:column;gap:.45rem">
           <a href="https://play.google.com/store/apps/details?id=com.viki.android" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
-          <a href="https://apps.apple.com/app/viki-asian-tv-dramas-movies/id641228811" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+          <a href="https://apps.apple.com/us/app/viki/id445553058" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
         </div>
       </div>
 
@@ -1970,12 +1985,29 @@ body>*:not(#cinema-bg){position:relative;z-index:2}
         </div>
       </div>
 
+      <!-- Gemini -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s,transform .3s" onmouseover="this.style.borderColor='rgba(79,124,255,.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">✨</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">Gemini</div></div>
+        <div style="display:flex;flex-direction:column;gap:.45rem">
+          <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=es_419" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
+          <a href="https://apps.apple.com/us/app/google-gemini/id6477489729" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+        </div>
+      </div>
+
+      <!-- CapCut -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s,transform .3s" onmouseover="this.style.borderColor='rgba(79,124,255,.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">🎬</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">CapCut</div></div>
+        <div style="display:flex;flex-direction:column;gap:.45rem">
+          <a href="https://play.google.com/store/apps/details?id=com.lemon.lvoverseas&hl=es_419" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
+          <a href="https://apps.apple.com/us/app/capcut-video-editor/id1500855883" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+        </div>
+      </div>
       <!-- Vix -->
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s,transform .3s" onmouseover="this.style.borderColor='rgba(79,124,255,.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.8rem">🌟</div><div style="font-family:'Syne',sans-serif;font-weight:800;color:#fff">Vix Premium</div></div>
         <div style="display:flex;flex-direction:column;gap:.45rem">
-          <a href="https://play.google.com/store/apps/details?id=com.univision.vix" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
-          <a href="https://apps.apple.com/app/vix-cine-y-tv-en-espanol/id1498407849" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
+          <a href="https://play.google.com/store/apps/details?id=com.univision.prendetv&hl=es_419" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(34,197,94,.2)'" onmouseout="this.style.background='rgba(34,197,94,.1)'">🛒 Play Store (Android)</a>
+          <a href="https://apps.apple.com/us/app/vix-tv-sports-and-news/id1531467766" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(79,124,255,.1);border:1px solid rgba(79,124,255,.25);color:#7aa2ff;font-size:.78rem;font-weight:600;padding:.5rem .8rem;border-radius:9px;transition:background .2s" onmouseover="this.style.background='rgba(79,124,255,.2)'" onmouseout="this.style.background='rgba(79,124,255,.1)'"> App Store (iPhone/iPad)</a>
         </div>
       </div>
 
@@ -2170,10 +2202,11 @@ const cuentas=[
   {icon:'▶️',title:'YouTube Premium',subtitle:'100% seguro · Garantía total',fromPrice:8,prices:[{label:'1 mes',price:8},{label:'2 meses',price:13}],features:['Sin anuncios','Descargas offline','Reproducción segundo plano','Calidad hasta 4K']},
 ];
 const ia=[
-  {icon:'🤖',title:'ChatGPT Plus',subtitle:'GPT-4 sin límites',fromPrice:15,prices:[{label:'1 mes',price:15},{label:'3 meses',price:40}],features:['GPT-4 acceso completo','DALL-E 3 generación imágenes','Análisis de archivos','Plugins y navegación web'],ctaText:'Activar ahora'},
+  {icon:'🤖',title:'ChatGPT 5.2',subtitle:'Cuenta compartida · versión 5.2',fromPrice:6,prices:[{label:'1 mes compartida',price:6},{label:'3 meses compartida',price:18},{label:'6 meses compartida',price:36},{label:'Cuenta privada',price:'9.50'}],features:['GPTs disponibles','DALL-E para imágenes','Búsquedas web','Análisis de datos','Visión y Python Code'],ctaText:'Activar ahora'},
+  {icon:'✨',title:'Gemini',subtitle:'1 perfil · IA avanzada de Google',fromPrice:7,prices:[{label:'1 perfil / mes',price:7}],features:['Respuestas inteligentes','Análisis de texto, imágenes y archivos','Generador de imágenes','Redacción y optimización de contenidos','Asistente de programación y código','Traducción multilingüe'],ctaText:'Activar ahora'},
+  {icon:'🎬',title:'CapCut Pro',subtitle:'Acceso Pro según el plan',fromPrice:9,prices:[{label:'Compartido / mes',price:9},{label:'Perfil privado / mes',price:12}],features:['Edición ilimitada','Filtros, efectos y transiciones premium','Exportación 4K 60FPS','Herramientas avanzadas de IA','Biblioteca de música y sonidos'],ctaText:'Activar ahora'},
   {icon:'🎨',title:'Canva Pro',subtitle:'Diseño profesional sin límites',fromPrice:8,prices:[{label:'1 mes',price:8},{label:'3 meses',price:20},{label:'6 meses',price:35}],features:['Miles de plantillas premium','Remover fondo automático','Magic Studio AI','Brand Kit completo'],ctaText:'Activar ahora'},
   {icon:'🌐',title:'VPN Premium',subtitle:'Navega seguro y sin límites',fromPrice:5,prices:[{label:'1 mes',price:5},{label:'3 meses',price:12},{label:'6 meses',price:20}],features:['Múltiples países disponibles','Velocidad ilimitada','Sin logs','Todos los dispositivos'],ctaText:'Activar ahora'},
-
 ];
 
 renderGrid('streaming-grid',streaming);
@@ -2389,6 +2422,8 @@ function toggleIptvCard(card){
 .et-chip:hover { background:rgba(0,245,255,.12); transform:translateY(-1px); }
 .et-chip.primary { background:linear-gradient(135deg,#bf00ff,#00f5ff); color:#fff; border-color:transparent; }
 .et-chip.primary:hover { opacity:.88; }
+.et-chip.install { border-color:rgba(250,204,21,.32); color:#facc15; background:linear-gradient(135deg,rgba(250,204,21,.10),rgba(0,245,255,.06)); }
+.et-chip.install:hover { background:linear-gradient(135deg,rgba(250,204,21,.18),rgba(0,245,255,.12)); }
 .et-chip.danger { border-color:rgba(255,0,153,.3); color:#ff0099; background:rgba(255,0,153,.05); }
 .et-chip.danger:hover { background:rgba(255,0,153,.12); }
 
@@ -2475,35 +2510,6 @@ function toggleIptvCard(card){
 </button>
 
 <!-- VENTANA CHAT -->
-<div id="et-win" role="dialog" aria-label="Asistente Express Tena">
-  <div id="et-header">
-    <div class="et-hdr-ava">🚀</div>
-    <div class="et-hdr-info">
-      <strong>Express Tena</strong>
-      <span><span class="et-online"></span>Asistente virtual · 24/7</span>
-    </div>
-    <a class="et-hdr-wa" href="https://wa.me/593992687009?text=Hola%20Express%20Tena" target="_blank" rel="noopener">📲 WhatsApp</a>
-  </div>
-  <div id="et-msgs" aria-live="polite"></div>
-  <div id="et-chips">
-    <button class="et-chip" onclick="etBot.goTo('streaming')">🎬 Streaming</button>
-    <button class="et-chip" onclick="etBot.goTo('deportes')">⚽ Deportes</button>
-    <button class="et-chip" onclick="etBot.ligas()">🏆 Ligas</button>
-    <button class="et-chip" onclick="etBot.goTo('apple')">🍎 Apple</button>
-    <button class="et-chip" onclick="etBot.goTo('iptv')">📡 IPTV</button>
-    <button class="et-chip" onclick="etBot.goTo('musica')">🎵 Música</button>
-    <button class="et-chip" onclick="etBot.goTo('migrar-playlist')">🔀 Migrar Playlist</button>
-    <button class="et-chip" onclick="etBot.goTo('ia')">🤖 IA & Tools</button>
-    <button class="et-chip" onclick="etBot.catalog()">📋 Ver catálogo</button>
-    <button class="et-chip danger" onclick="etBot.reporte()">🚨 Reportar problema</button>
-  </div>
-  <div id="et-input-row">
-    <input id="et-input" type="text" placeholder="Escribe tu pregunta…" autocomplete="off"
-      onkeydown="if(event.key==='Enter') etBot.send()" />
-    <button id="et-send" onclick="etBot.send()">➤</button>
-  </div>
-</div>
-
 <script>
 (function(){
 'use strict';
@@ -2626,6 +2632,10 @@ function localAnswer(q) {
   // Migrar / transferir playlist
   if(/(migrar|migra|transferir|transferencia|trasladar|pasar|mover|cambiar|playlist|lista de reproducci|lista music|canciones|biblioteca)/.test(n))
     return '🔀 <strong>¿Quieres llevar tu música a otra plataforma?</strong><br><small style="color:rgba(200,190,255,.6)">Herramientas gratuitas — sin perder ninguna canción</small><br><br>🎵 <strong>TuneMyMusic</strong> — gratis hasta 500 canciones, sin descargar nada<br>🔊 <strong>Soundiiz</strong> — +50 plataformas, gratis para una playlist a la vez<br>▶️ <strong>Playlistor.io</strong> — sin registro, Spotify ↔ Apple Music al instante<br>🎧 <strong>FreeYourMusic</strong> — app + web, gratis hasta 300 canciones<br>⚡ <strong>TrackMeld</strong> — 100% gratis, ideal para YouTube Music ↔ Spotify<br><br>Todas funcionan con: Spotify · Apple Music · YouTube Music · Deezer · Tidal · Amazon Music<br><br><button class="et-chip" onclick="etBot.goTo(\'migrar-playlist\')">🔀 Ver sección completa en la página</button>';
+
+  // Links de instalación
+  if(/(link|enlace|instalaci|instalar|descarga|apk|play store|app store|downloader)/.test(n) && /(no funciona|falla|fallo|error|roto|dañado|danado|no abre|no vale|caido|caida)/.test(n))
+    return '🔗 <strong>¿Un link de instalación no funciona?</strong><br><small style="color:rgba(200,190,255,.65)">Toca el botón y se abrirá Gmail con el reporte listo para enviar.</small><br><br><button class="et-chip install" onclick="etBot.linkInstalacion()">📧 Reportar link por correo</button>';
 
   // Reporte / problema
   if(/(problema|reporte|falla|error|garantia|no funciona|soporte|caido|caida|roto|desactivad)/.test(n))
@@ -2795,6 +2805,14 @@ function cancelarReporte() {
   addBot('Reporte cancelado. Si necesitas ayuda escríbenos al <a href="https://wa.me/593992687009" target="_blank">WhatsApp 0992687009</a> 📲');
 }
 
+function reportarLinkInstalacion() {
+  if(!opened) etBot.toggle();
+  const cuerpo = encodeURIComponent('Hola Express Tena,\n\nQuiero reportar que un link de instalación no funciona.\n\nApp o plataforma: \nDispositivo: \nAndroid / iPhone / TV / Fire TV: \n¿Qué error aparece?: \n\nGracias.');
+  const url = 'https://mail.google.com/mail/?view=cm&to=carolinefolk3%40gmail.com&su=Link%20de%20instalaci%C3%B3n%20no%20funciona%20-%20Express%20Tena&body=' + cuerpo;
+  addBot('🔗 <strong>Reporte de link de instalación</strong><br><small style="color:rgba(200,190,255,.65)">Se abrirá Gmail con el mensaje listo. Solo escribe qué app falló y envíalo.</small>');
+  window.open(url, '_blank');
+}
+
 // ── API PÚBLICA ──
 window.etBot = {
   toggle: function(){
@@ -2830,6 +2848,7 @@ window.etBot = {
     }
   },
   catalog: function(){ mostrarCatalogo(); },
+  linkInstalacion: function(){ reportarLinkInstalacion(); },
   switchTab: function(btn, secId){
     const card = btn.closest('.et-catalog');
     card.querySelectorAll('.et-tab').forEach(function(t){ t.classList.remove('active'); });
